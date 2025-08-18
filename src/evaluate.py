@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Add project root to Python path
+
 import joblib
 from sklearn.metrics import accuracy_score, confusion_matrix
 from src.preprocess import load_and_preprocess_data
@@ -10,11 +14,11 @@ def evaluate_model():
     Load the saved model and evaluate it using accuracy score and confusion matrix.
     """
     # Load the saved model
-    model_path = '../models/saved_model.pkl'  # Adjust the path as needed
+    model_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/saved_model.pkl'  # Adjusted to absolute path
     model = joblib.load(model_path)
 
     # Load and preprocess the data
-    file_path = '../data/fake_news.csv'  # Adjust the path as needed
+    file_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/data/fake_news.csv'  # Adjusted to absolute path
     _, X_test, _, y_test = load_and_preprocess_data(file_path)
 
     # Make predictions

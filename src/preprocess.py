@@ -18,8 +18,12 @@ def load_and_preprocess_data(file_path):
     data = pd.read_csv(file_path)
 
     # Check if required columns exist
-    if 'text' not in data.columns or 'label' not in data.columns:
-        raise ValueError("The dataset must contain 'text' and 'label' columns.")
+    if 'text' not in data.columns:
+        raise ValueError("The dataset must contain 'text' column.")
+
+    # Create 'label' column if missing
+    if 'label' not in data.columns:
+        data['label'] = data['subject'].apply(lambda x: 1 if x == 'News' else 0)
 
     # Clean the text data
     def clean_text(text):
