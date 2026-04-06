@@ -1,16 +1,20 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import joblib
 from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.metrics import accuracy_score
-from preprocess import load_and_preprocess_data
+from src.preprocess import load_and_preprocess_data
 
 
 def train_and_save_model():
     """
-    Train a PassiveAggressiveClassifier using TF-IDF features and save the model.
+    Train a PassiveAggressiveClassifier using TF-IDF features and save the model and vectorizer.
     """
     # Load and preprocess the data
-    file_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/data/fake_news.csv'  # Updated file_path to use the absolute path
-    X_train, X_test, y_train, y_test = load_and_preprocess_data(file_path)
+    file_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/data/fake_news.csv'
+    X_train, X_test, y_train, y_test, vectorizer = load_and_preprocess_data(file_path)  # Get the vectorizer as well
 
     # Ensure the dataset has 'text' and 'label' columns
     # If 'label' column is missing, add preprocessing logic to create it based on 'subject' or other criteria
@@ -26,10 +30,13 @@ def train_and_save_model():
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Model Accuracy: {accuracy * 100:.2f}%")
 
-    # Save the trained model
-    model_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/saved_model.pkl'  # Adjusted to absolute path
+    # Save the trained model and vectorizer
+    model_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/saved_model.pkl'
+    vectorizer_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/tfidf_vectorizer.pkl'
     joblib.dump(model, model_path)
+    joblib.dump(vectorizer, vectorizer_path)
     print(f"Model saved to {model_path}")
+    print(f"Vectorizer saved to {vectorizer_path}")
 
 
 if __name__ == "__main__":

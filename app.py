@@ -3,8 +3,8 @@ import joblib
 from src.evaluate import plot_confusion_matrix
 
 # Load the trained model and TF-IDF vectorizer
-model_path = 'models/saved_model.pkl'
-vectorizer_path = 'models/tfidf_vectorizer.pkl'
+model_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/saved_model.pkl'
+vectorizer_path = 'c:/Users/ASUS/Desktop/fake-news-detection-nlp/models/tfidf_vectorizer.pkl'
 
 model = joblib.load(model_path)
 vectorizer = joblib.load(vectorizer_path)
