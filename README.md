@@ -3,6 +3,8 @@
 ## Overview
 The Fake News Detection NLP project aims to classify news articles as real or fake using natural language processing techniques. This project leverages machine learning models to analyze text data and make predictions based on patterns in the content.
 
+Live streamlit app's link-"https://fake-news-detection-c7apprzjyqrbhvcwviwb76p.streamlit.app/"
+
 ## Folder Structure
 ```
 fake-news-detection-nlp/
